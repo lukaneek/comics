@@ -13,7 +13,6 @@
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
-
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg border border-secondary" style="background-color: #e1ecfd">
