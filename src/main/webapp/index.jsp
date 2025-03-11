@@ -14,8 +14,6 @@
 <link rel="stylesheet" href="/css/loginReg.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<!-- YOUR own local JavaScript -->
-<script type="text/javascript" src="/js/app.js"></script>
 
 </head>
 <body>

@@ -44,7 +44,6 @@ public class ComicController {
 	@Autowired
 	ComicService comicService;
 	
-	
 	@Autowired
 	CommentService commentService;
   
