@@ -21,13 +21,16 @@ public class UserController {
 
     @Autowired
     UserService users;
-
-    // Login page
     @GetMapping("/")
+    public String hello() {
+    	return "index.jsp";
+    }
+    // Login page
+    @GetMapping("/loginReg")
     public String index(Model model) {
         model.addAttribute("newUser", new User());
         model.addAttribute("newLogin", new LoggedInUser());
-        return "index.jsp";
+        return "loginReg.jsp";
     }
 
     // checks if you are already registered with email, if not registers you
@@ -36,7 +39,7 @@ public class UserController {
         users.register(newUser, result);
         if (result.hasErrors()) {
             model.addAttribute("newLogin", new LoggedInUser());
-            return "index.jsp";
+            return "loginReg.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
             return "redirect:/Home";
@@ -49,7 +52,7 @@ public class UserController {
         User user = users.login(newLogin, result);
         if (result.hasErrors()) {
             model.addAttribute("newUser", new User());
-            return "index.jsp";
+            return "loginReg.jsp";
         } else {
             session.setAttribute("userId", user.getId());
             return "redirect:/Home";
