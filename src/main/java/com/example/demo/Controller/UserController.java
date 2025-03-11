@@ -21,6 +21,7 @@ public class UserController {
 
     @Autowired
     UserService users;
+    
     @GetMapping("/")
     public String hello() {
     	return "index.jsp";

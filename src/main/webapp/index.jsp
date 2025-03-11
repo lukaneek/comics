@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="/loginReg">HIIIIII</a>
+	<a href="./loginReg">HIIIIII</a>
 </body>
 </html>
