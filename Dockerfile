@@ -7,7 +7,9 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM tomcat:latest
+FROM tomcat:latest 
+RUN mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2
+RUN mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps
 COPY --from=builder /app/target/*.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
