@@ -10,8 +10,6 @@
 <title>Login And Register</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/loginReg.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
