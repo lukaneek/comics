@@ -44,7 +44,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container" style="width: 50%">
+	<div class="container" style="width: 30%">
     <h2>Create Genre</h2>
 	    <form:form action="./genres" method="POST" modelAttribute="genre">
 	        <form:label class="form-label" path="name">Name: </form:label>
@@ -53,7 +53,7 @@
 	
 	        <form:button class="btn btn-primary btn-sm mt-2" type="submit" value="submit">Create</form:button>
 	    </form:form>
-	    <div class="container" style="width: 50%">
+	    <div style="padding-top: 20px">
 		    <h2>Genres</h2>
 		    <table class="table table-hover">
 		        <thead>

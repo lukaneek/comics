@@ -47,11 +47,11 @@
 		</div>
 	</nav>
 	<div class="container bg-primary-subtle" style="width: 75%">
-		<div>
+		<div style="padding-bottom: 30px">
 		<h1>Search Comic Titles</h1>
 		<form:form action="./searchresults" method="Get">
 			<input type="text" name="search" />
-			<button type="submit">search</button>
+			<button  class="btn btn-primary" type="submit">Search</button>
 		</form:form>
 		</div>
 			<table class="table table-hover table-bordered">
@@ -66,7 +66,7 @@
 					<c:forEach var="comic" items="${searchedComics}">
 						<tr>
 							<td><a href="./bookdetails?id=${comic.id}"> <c:out value="${comic.title}" /></a></td>
-							<td><a href="./bookdetails?id=${comic.id}"> <img src="./uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:150px;"></a></td>
+							<td><a href="./bookdetails?id=${comic.id}"> <img src="./uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:100px;"></a></td>
 		                	<td>
 							    <c:choose>
 			                        <c:when test="${rentedComicIds.contains(comic.id)}">
