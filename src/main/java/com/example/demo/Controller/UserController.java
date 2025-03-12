@@ -52,7 +52,7 @@ public class UserController {
             return "register.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
-            return "redirect:" + appUrlPath + "/login";
+            return "redirect:" + appUrlPath + "/home";
         }
     }
 

@@ -29,28 +29,22 @@
 	</nav>
 	<div class="container" style="width: 60%">
 		<div class="d-flex justify-content-around">
-			<div>
-				<div>
-					<div>
-						<form:form action="./login" method="post" modelAttribute="newLogin">
-							<h2>Login</h2>
-							<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your Email and Password!</p>
-							<div class="mb-2">
-								<form:label class="form-label" path="email">Email</form:label>
-								<form:input class="form-control" type="email" path="email" placeholder="Email" />
-								<form:errors class="fw-lighter fst-italic text-danger" path="email" />
-							</div>
-							<div class="mb-2">
-								<form:label class="form-label" path="password">Password</form:label>
-								<form:input class="form-control" type="password" path="password"
-									placeholder="Password" />
-								<form:errors class="fw-lighter fst-italic text-danger" path="password" />
-							</div>
-							<input class="btn btn-primary" type="submit" name="" value="Login">
-						</form:form>
-					</div>
+			<form:form action="./login" method="post" modelAttribute="newLogin">
+				<h2>Login</h2>
+				<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your Email and Password!</p>
+				<div class="mb-2">
+					<form:label class="form-label" path="email">Email</form:label>
+					<form:input class="form-control" type="email" path="email" placeholder="Email" />
+					<form:errors class="fw-lighter fst-italic text-danger" path="email" />
 				</div>
-			</div>
+				<div class="mb-2">
+					<form:label class="form-label" path="password">Password</form:label>
+					<form:input class="form-control" type="password" path="password"
+						placeholder="Password" />
+					<form:errors class="fw-lighter fst-italic text-danger" path="password" />
+				</div>
+				<input class="btn btn-primary" type="submit" name="" value="Login">
+			</form:form>
 		</div>
 	</div>
 </body>

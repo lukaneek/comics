@@ -56,9 +56,12 @@
 						</div>
 						<div class="mb-2">
 							<form:label class="form-label" path="confirm">Confirm Password</form:label>
-							<form:input class="form-control" type="password" path="confirm"
-								placeholder="Confirm Password" />
+							<form:input class="form-control" type="password" path="confirm" placeholder="Confirm Password" />
 							<form:errors class="fw-lighter fst-italic text-danger" path="confirm" />
+						</div>
+						<div class="mb-2">
+							<form:label class="form-check-label" path="isAdmin">Admin Access</form:label>
+							<form:checkbox class="form-check-input me-3" path="isAdmin"/>
 						</div>
 						<input class="btn btn-primary" type="submit" name="" value="Register">
 					</form:form>
