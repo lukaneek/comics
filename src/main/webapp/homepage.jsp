@@ -29,14 +29,14 @@
           				<a class="nav-link active" aria-current="page" href="#">Home</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/genre">Add/View Genres</a>
+          				<a class="nav-link" aria-current="page" href="/genres">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/books/search">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="/searchbooks">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/books/new">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/addbooks">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">

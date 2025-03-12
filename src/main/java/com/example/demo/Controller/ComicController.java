@@ -74,7 +74,7 @@ public class ComicController {
 	}
 
 	// Takes you to a form to create a new comic
-	@GetMapping("/books/new")
+	@GetMapping("/addbooks")
 	public String newComic(@ModelAttribute("comic") Comic comic, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		model.addAttribute("genres", genreService.allGenres());
@@ -254,7 +254,7 @@ public class ComicController {
 	    return "redirect:/home";
 	}
 	//search for comics by title
-	@GetMapping("/books/search")
+	@GetMapping("/searchbooks")
 	public String searchPage(Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -264,7 +264,7 @@ public class ComicController {
 		return "comicSearch.jsp";
 	}
 	//return searched comics
-	@GetMapping("/books/results")
+	@GetMapping("/searchresults")
 	public String searchBar(Model model, HttpSession session, @RequestParam("search") String search) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {

@@ -36,7 +36,7 @@
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/comics/new">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/addbooks">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
@@ -49,7 +49,7 @@
 	<div class="container bg-primary-subtle" style="width: 75%">
 		<div>
 		<h1>Search Comic Titles</h1>
-		<form:form action="/books/results" method="Get">
+		<form:form action="/searchresults" method="Get">
 			<input type="text" name="search" />
 			<button type="submit">search</button>
 		</form:form>

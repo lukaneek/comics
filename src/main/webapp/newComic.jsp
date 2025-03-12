@@ -34,7 +34,7 @@
           				<a class="nav-link" aria-current="page" href="/genres">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/books/search">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="/searchbooks">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
