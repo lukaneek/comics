@@ -50,7 +50,7 @@
 			<h1><c:out value="${comic.title}" /></h1>
 			<div class="d-flex justify-content-between">
 				<div>
-					<p><img src="/uploads/cover_pictures/${comic.coverImage}"
+					<p><img src="./uploads/cover_pictures/${comic.coverImage}"
 						alt="${comic.title}'s Cover Image" style="width: 150px;"></p>
 				</div>
 				<div>
