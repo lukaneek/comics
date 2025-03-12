@@ -48,7 +48,7 @@ public class UserController {
             return "register.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
-            return "redirect:/home";
+            return "redirect:home";
         }
     }
 
@@ -61,7 +61,7 @@ public class UserController {
             return "login.jsp";
         } else {
             session.setAttribute("userId", user.getId());
-            return "redirect:/home";
+            return "redirect:home";
         }
     }
 
