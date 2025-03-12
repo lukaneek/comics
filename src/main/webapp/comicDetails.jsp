@@ -36,7 +36,7 @@
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/addbooks">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/addbook">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
@@ -72,7 +72,7 @@
 			</div>
 			<c:if test="${isAdmin}">
 				<div class="d-flex justify-content-evenly">
-					<a href="/books/edit/${comic.id}" class="btn btn-warning btn-sm">Edit</a>
+					<a href="/editbook?id=${comic.id}" class="btn btn-warning btn-sm">Edit</a>
 					<form action="/books/destroy/${comic.id}" method="post">
 						<input type="hidden" name="_method" value="delete"> 
 						<input type="submit" value="Delete" class="btn btn-danger btn-sm">

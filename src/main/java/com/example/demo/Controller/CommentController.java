@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +26,9 @@ import jakarta.validation.Valid;
 @Controller
 public class CommentController {
 
+	@Value("${app.url.path}")
+	String appUrlPath;
+	
 	@Autowired
 	CommentService comments;
 
@@ -46,7 +50,7 @@ public class CommentController {
 		
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		
 		
@@ -58,13 +62,13 @@ public class CommentController {
 		comment.setComic(oneComic);
 		comment.setUser(loggedInUser);
 		comments.createComment(comment);
-		return "redirect:/home";
+		return "redirect:" + appUrlPath + "/home";
 	}
 
 	// Delete a comment by id
 	@DeleteMapping("/comments/destory/{id}")
 	public String destroyComment(@PathVariable("id") Long id) {
 		comments.deleteComment(id);
-		return "redirect:/home";
+		return "redirect:" + appUrlPath + "/home";
 	}
 }

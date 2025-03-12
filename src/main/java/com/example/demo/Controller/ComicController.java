@@ -62,7 +62,7 @@ public class ComicController {
 	public String homepage(HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		// Fetch all comics
@@ -78,12 +78,12 @@ public class ComicController {
 	}
 
 	// Takes you to a form to create a new comic
-	@GetMapping("/addbooks")
+	@GetMapping("/addbook")
 	public String newComic(@ModelAttribute("comic") Comic comic, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		model.addAttribute("genres", genreService.allGenres());
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		return "newComic.jsp";
@@ -101,7 +101,7 @@ public class ComicController {
         }
         
         if (userId == null) {
-            return "redirect:/";
+        	return "redirect:" + appUrlPath + "/";
         }
         
         String uploadDir = "uploads/cover_pictures/";
@@ -126,16 +126,16 @@ public class ComicController {
                 }
             }
             comicService.createComic(comic);
-            return "redirect:/home";
+            return "redirect:" + appUrlPath + "/home";
         } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/addbooks";
+            return "redirect:" + appUrlPath + "/addbook";
         }
     }
 	
 	//Shows you all the details of a comic
-	@GetMapping("/books/details/{comicId}")
-	public String showComicDetails(@PathVariable("comicId") Long comicId, @ModelAttribute("comment") Comment comment, HttpSession session, Model model) {
+	@GetMapping("/bookdetails")
+	public String showComicDetails(@RequestParam("id") Long comicId, @ModelAttribute("comment") Comment comment, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
 			return "redirect:/";
@@ -143,7 +143,7 @@ public class ComicController {
 
 		Comic comic = comicService.findComic(comicId);
 		if (comic == null) {
-			return "redirect:/books";
+			return "redirect:" + appUrlPath + "/books";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		model.addAttribute("comic", comic);
@@ -156,11 +156,11 @@ public class ComicController {
 	}
 	
 	// Takes you to update comic form where you can make changes
-	@GetMapping("/books/edit/{id}")
-	public String editComic(@PathVariable("id") Long id, Model model, HttpSession session) {
+	@GetMapping("/editbook")
+	public String editComic(@RequestParam("id") Long id, Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		Comic comic = comicService.findComic(id);
@@ -181,13 +181,13 @@ public class ComicController {
 	        return "editComic.jsp";
 	    }
 	    if (userId == null) {
-	        return "redirect:/";
+	    	return "redirect:" + appUrlPath + "/";
 	    }
 
 	    // Retrieve existing comic to retain the current cover image if no new file is uploaded
 	    Comic existingComic = comicService.findComic(id);
 	    if (existingComic == null) {
-	        return "redirect:/home";
+	    	return "redirect:" + appUrlPath + "/home";
 	    }
 
 	    String uploadDir = "uploads/cover_pictures/";
@@ -216,10 +216,10 @@ public class ComicController {
 	        }
 
 	        comicService.updateComic(comic);
-	        return "redirect:/home";
+	        return "redirect:" + appUrlPath + "/home";
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	        return "redirect:/home";
+	        return "redirect:" + appUrlPath + "/home";
 	    }
 	}
 	
@@ -228,7 +228,7 @@ public class ComicController {
 	public String rentComic(@PathVariable("comicId") Long comicId, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 	    if (userId == null) {
-	        return "redirect:/";
+	    	return "redirect:" + appUrlPath + "/";
 	    }
 	    
 	    User user = userService.getLoggedInUser(userId);
@@ -240,7 +240,7 @@ public class ComicController {
 	    	rental.setComic(comic);
 	    	rentalService.createRental(rental);
 	    }
-	    return "redirect:/home";
+	    return "redirect:" + appUrlPath + "/home";
 	}
 	
 	// Return a comic
@@ -248,21 +248,21 @@ public class ComicController {
 	public String returnComic(@PathVariable("rentalId") Long rentalId, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 	    if (userId == null) {
-	        return "redirect:/";
+	    	return "redirect:" + appUrlPath + "/";
 	    }
 	    
 	    Rental rental = rentalService.findRentalById(rentalId);
 	    if (rental != null && rental.getUser().getId().equals(userId)) {
 	    	rentalService.deleteRental(rentalId);
 	    }
-	    return "redirect:/home";
+	    return "redirect:" + appUrlPath + "/home";
 	}
 	//search for comics by title
 	@GetMapping("/searchbooks")
 	public String searchPage(Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		return "comicSearch.jsp";
@@ -272,7 +272,7 @@ public class ComicController {
 	public String searchBar(Model model, HttpSession session, @RequestParam("search") String search) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
-			return "redirect:/";
+			return "redirect:" + appUrlPath + "/";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		
@@ -287,7 +287,7 @@ public class ComicController {
 	@DeleteMapping("/books/destroy/{id}")
 	public String destroyComic(@PathVariable("id") Long id) {
 		comicService.deleteComic(id);
-		return "redirect:/home";
+		return "redirect:" + appUrlPath + "/home";
 	}
 	
 }

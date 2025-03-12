@@ -36,7 +36,7 @@
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/addbooks">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/addbook">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
@@ -66,8 +66,8 @@
 				<tbody class="table-group-divider">
 					<c:forEach var="comic" items="${comics}">
 						<tr>
-							<td><a href="/books/details/${comic.id}"> <c:out value="${comic.title}" /></a></td>
-							<td><a href="/books/details/${comic.id}"> <img src="/uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:150px;"></a></td>
+							<td><a href="/bookdetails?id=${comic.id}"> <c:out value="${comic.title}" /></a></td>
+							<td><a href="/bookdetails?id=${comic.id}"> <img src="/uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:150px;"></a></td>
 		                	<td>
 							    <c:choose>
 			                        <c:when test="${rentedComicIds.contains(comic.id)}">
@@ -104,8 +104,8 @@
 			        <tbody class="table-group-divider">
 			            <c:forEach var="rental" items="${rentedComics}">
 			                <tr>
-			                    <td><a href="/books/details/${rental.comic.id}"> <c:out value="${rental.comic.title}" /></a></td>
-			                    <td><a href="/books/details/${rental.comic.id}"> <img src="/uploads/cover_pictures/${rental.comic.coverImage}" alt="${rental.comic.title} Cover" style="width:150px;"></a></td>
+			                    <td><a href="/bookdetails?id=${rental.comic.id}"> <c:out value="${rental.comic.title}" /></a></td>
+			                    <td><a href="/bookdetails?id=${rental.comic.id}"> <img src="/uploads/cover_pictures/${rental.comic.coverImage}" alt="${rental.comic.title} Cover" style="width:150px;"></a></td>
 			                    <td><fmt:formatDate value="${rental.createdAt}" pattern="MM/dd/yyyy" /></td>
 			                    <td>
 								    <form action="/books/return/${rental.id}" method="post" style="display:inline;">

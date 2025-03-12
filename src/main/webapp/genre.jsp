@@ -34,7 +34,7 @@
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/addbooks">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/addbook">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">

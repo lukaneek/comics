@@ -30,12 +30,9 @@
 		<h3 class="fw-lighter fst-italic text-secondary-emphasis m-3">A
 			place for comic lovers of all ages!</h3>
 		<div class="d-flex justify-content-around">
-			<form action="./login">
-				<input class="btn btn-success" type="submit" value="Login" />
-			</form>
-			<form action="./register">
-				<input class="btn btn-success" type="submit" value="Register" />
-			</form>
+			
+			<a class="btn btn-success" href="./login">Login</a>
+			<a class="btn btn-success" href="./register">Register</a>
 		</div>
 	</div>
 </body>
