@@ -61,7 +61,7 @@ public class UserController {
             return "login.jsp";
         } else {
             session.setAttribute("userId", user.getId());
-            return "redirect:home";
+            return "redirect:/home";
         }
     }
 
