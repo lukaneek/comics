@@ -169,11 +169,13 @@ public class ComicController {
 	@PutMapping("/books/{id}")
 	public String updateComic(@PathVariable("id") Long id, @Valid @ModelAttribute("comic") Comic comic,
 	        BindingResult result, Model model, HttpSession session, @RequestParam("coverPicture") MultipartFile file) {
-	    if (result.hasErrors()) {
+		 Long userId = (Long) session.getAttribute("userId");
+		if (result.hasErrors()) {
 	        model.addAttribute("comic", comic);
+	        model.addAttribute("user", userService.getLoggedInUser(userId));
+        	model.addAttribute("genres", genreService.allGenres());
 	        return "editComic.jsp";
 	    }
-	    Long userId = (Long) session.getAttribute("userId");
 	    if (userId == null) {
 	        return "redirect:/";
 	    }
