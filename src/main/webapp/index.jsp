@@ -33,7 +33,7 @@
 			<form action="./login">
 				<input class="btn btn-success" type="submit" value="Login" />
 			</form>
-			<form action="/register">
+			<form action="./register">
 				<input class="btn btn-success" type="submit" value="Register" />
 			</form>
 		</div>

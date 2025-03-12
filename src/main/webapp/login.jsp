@@ -21,7 +21,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/register">Register</a>
+          				<a class="nav-link active" aria-current="page" href="./register">Register</a>
         			</li>
 				</ul>
 			</div>
@@ -32,7 +32,7 @@
 			<div>
 				<div>
 					<div>
-						<form:form action="/login" method="post" modelAttribute="newLogin">
+						<form:form action="./login" method="post" modelAttribute="newLogin">
 							<h2>Login</h2>
 							<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your Email and Password!</p>
 							<div class="mb-2">
