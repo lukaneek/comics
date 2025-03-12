@@ -9,9 +9,9 @@
 <meta charset="ISO-8859-1">
 <title>Login And Register</title>
 <!-- for Bootstrap CSS -->
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./webjars/bootstrap/css/bootstrap.min.css" />
 <!-- For any Bootstrap that uses JS -->
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="./webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>

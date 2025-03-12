@@ -9,11 +9,11 @@
 <meta charset="UTF-8">
 <title>Welcome <c:out value="${user.firstName}" /></title>
 <!-- for Bootstrap CSS -->
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/homepage.css" />
+<link rel="stylesheet" href="./css/homepage.css" />
 <!-- For any Bootstrap that uses JS -->
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="./webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 <c:set var="isAdmin" value="#{user.isAdmin == true}" />

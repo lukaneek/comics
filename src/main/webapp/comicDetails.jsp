@@ -10,11 +10,11 @@
 <meta charset="ISO-8859-1">
 <title><c:out value="${comic.title}" /></title>
 <!-- for Bootstrap CSS -->
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/ComicDetails.css" />
+<link rel="stylesheet" href="./css/ComicDetails.css" />
 <!-- For any Bootstrap that uses JS -->
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="./webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
