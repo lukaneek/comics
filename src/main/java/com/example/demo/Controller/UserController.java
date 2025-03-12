@@ -12,6 +12,7 @@ import com.example.demo.Models.LoggedInUser;
 import com.example.demo.Models.User;
 import com.example.demo.Services.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     UserService users;
+    
+    @Autowired
+    private HttpServletRequest request;
     
     @GetMapping("/")
     public String hello() {
@@ -48,7 +52,7 @@ public class UserController {
             return "register.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
-            return "redirect:/home";
+            return "redirect:" + request.getContextPath() + "/home";
         }
     }
 
@@ -61,7 +65,7 @@ public class UserController {
             return "login.jsp";
         } else {
             session.setAttribute("userId", user.getId());
-            return "redirect:./home";
+            return "redirect:" + request.getContextPath() + "/home";
         }
     }
 
