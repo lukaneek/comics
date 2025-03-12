@@ -125,7 +125,7 @@ public class ComicController {
             return "redirect:/home";
         } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/books/new";
+            return "redirect:/addbooks";
         }
     }
 	

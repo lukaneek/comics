@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,9 @@ import jakarta.validation.Valid;
 @Controller
 public class UserController {
 
+	@Value("${app.url.path}")
+	String appUrlPath;
+	
     @Autowired
     UserService users;
     
@@ -48,7 +52,7 @@ public class UserController {
             return "register.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
-            return "redirect:home";
+            return "redirect:" + appUrlPath + "/login";
         }
     }
 
@@ -61,7 +65,7 @@ public class UserController {
             return "login.jsp";
         } else {
             session.setAttribute("userId", user.getId());
-            return "redirect:/home";
+            return "redirect:" + appUrlPath + "/home";
         }
     }
 
@@ -69,6 +73,6 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:" + appUrlPath + "/login";
     }
 }

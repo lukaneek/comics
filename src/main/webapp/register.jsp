@@ -21,7 +21,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/login">Login</a>
+          				<a class="nav-link active" aria-current="page" href="./login">Login</a>
         			</li>
 				</ul>
 			</div>
@@ -31,7 +31,7 @@
 		<div class="d-flex justify-content-around">
 			<div>
 				<div>
-					<form:form action="/register" method="post" modelAttribute="newUser">
+					<form:form action="./register" method="post" modelAttribute="newUser">
 						<h2>Register</h2>
 						<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your email and create a password!</p>
 						<div class="mb-2">
