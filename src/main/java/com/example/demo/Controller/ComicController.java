@@ -107,6 +107,7 @@ public class ComicController {
         String uploadDir = "uploads/cover_pictures/";
         Path uploadPath = Paths.get(uploadDir);
         
+        
         try {
             // Create the directory if it doesn't exist
             if (!Files.exists(uploadPath)) {
