@@ -28,13 +28,13 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/home">Home</a>
+          				<a class="nav-link active" aria-current="page" href="./home">Home</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/genres">Add/View Genres</a>
+          				<a class="nav-link" aria-current="page" href="./genres">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/searchbooks">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="./searchbooks">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
@@ -42,7 +42,7 @@
         				</li>
         			</c:if>
         			<li class="nav-item">
-          				<a href="/logout" class="nav-link">Logout</a>
+          				<a href="./logout" class="nav-link">Logout</a>
         			</li>
 				</ul>
 			</div>
@@ -50,7 +50,7 @@
 	</nav>
 	<div class="container" style="width: 50%">
 		<h1>New Comic</h1>
-		<form:form action="/newBook" method="POST" modelAttribute="comic" enctype="multipart/form-data">
+		<form:form action="./newBook" method="POST" modelAttribute="comic" enctype="multipart/form-data">
 			<div class="mb-2">
 				<form:label class="form-label" path="title">Title</form:label>
 				<form:input class="form-control" path="title"/>

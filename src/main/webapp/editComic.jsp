@@ -27,18 +27,18 @@
           				<a class="nav-link active" aria-current="page" href="#">Home</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/genres">Add/View Genres</a>
+          				<a class="nav-link" aria-current="page" href="./genres">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/searchbooks">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="./searchbooks">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/addBooks">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="./addBooks">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
-          				<a href="/logout" class="nav-link">Logout</a>
+          				<a href="./logout" class="nav-link">Logout</a>
         			</li>
 				</ul>
 			</div>
@@ -46,7 +46,7 @@
 	</nav>
 	<div class="container" style="width: 50%">
 		<h1>Edit Comic</h1>
-		<form:form action="/books/${comic.id}" method="post" modelAttribute="comic" enctype="multipart/form-data">
+		<form:form action="./books/${comic.id}" method="post" modelAttribute="comic" enctype="multipart/form-data">
 		<input type="hidden" name="_method" value="put">
 			<div class="mb-2">
 				<form:label class="form-label" path="title">Title</form:label>

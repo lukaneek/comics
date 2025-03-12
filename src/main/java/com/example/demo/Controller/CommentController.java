@@ -66,7 +66,7 @@ public class CommentController {
 	}
 
 	// Delete a comment by id
-	@DeleteMapping("/comments/destory/{id}")
+	@DeleteMapping("/comments/destroy/{id}")
 	public String destroyComment(@PathVariable("id") Long id) {
 		comments.deleteComment(id);
 		return "redirect:" + appUrlPath + "/home";

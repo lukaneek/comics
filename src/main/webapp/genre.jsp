@@ -24,21 +24,21 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/home">Home</a>
+          				<a class="nav-link active" aria-current="page" href="./home">Home</a>
         			</li>
         			<li class="nav-item">
           				<a class="nav-link" aria-current="page" href="#">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/searchbooks">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="./searchbooks">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/addbook">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="./addbook">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
-          				<a href="/logout" class="nav-link">Logout</a>
+          				<a href="./logout" class="nav-link">Logout</a>
         			</li>
 				</ul>
 			</div>
@@ -46,7 +46,7 @@
 	</nav>
 	<div class="container" style="width: 50%">
     <h2>Create Genre</h2>
-	    <form:form action="/genres" method="POST" modelAttribute="genre">
+	    <form:form action="./genres" method="POST" modelAttribute="genre">
 	        <form:label class="form-label" path="name">Name: </form:label>
 	        <form:input class="form-control" type="text" path="name"/>
 	        <form:errors class="fw-lighter fst-italic text-danger" path="name"/>
@@ -68,7 +68,7 @@
 		                <tr>
 		                    <td><c:out value="${genre.name}"></c:out></td>
 		                <td>
-		                    <form action="/genres/${genre.id}" method="post">
+		                    <form action="./genres/${genre.id}" method="post">
 		                        <input type="hidden" name="_method" value="delete">
 		                        <button class="btn btn-danger btn-sm" type="submit" value="Delete">Delete</button>
 		                    </form>
