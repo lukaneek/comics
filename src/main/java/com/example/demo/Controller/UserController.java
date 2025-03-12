@@ -27,36 +27,41 @@ public class UserController {
     	return "index.jsp";
     }
     // Login page
-    @GetMapping("/loginReg")
-    public String index(Model model) {
-        model.addAttribute("newUser", new User());
+    @GetMapping("/login")
+    public String login(Model model) {
         model.addAttribute("newLogin", new LoggedInUser());
-        return "loginReg.jsp";
+        return "login.jsp";
+    }
+    
+    @GetMapping("/register")
+    public String register(Model model) {
+        model.addAttribute("newUser", new User());
+        return "register.jsp";
     }
 
     // checks if you are already registered with email, if not registers you
-    @PostMapping("/register/user")
+    @PostMapping("/register")
     public String registerUser(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, HttpSession session, Model model) {
         users.register(newUser, result);
         if (result.hasErrors()) {
             model.addAttribute("newLogin", new LoggedInUser());
-            return "loginReg.jsp";
+            return "register.jsp";
         } else {
             session.setAttribute("userId", newUser.getId());
-            return "redirect:/Home";
+            return "redirect:/home";
         }
     }
 
     // checks if you have an account and logs you in
-    @PostMapping("/login/user")
+    @PostMapping("/login")
     public String loginUser(@Valid @ModelAttribute("newLogin") LoggedInUser newLogin, BindingResult result, HttpSession session, Model model) {
         User user = users.login(newLogin, result);
         if (result.hasErrors()) {
             model.addAttribute("newUser", new User());
-            return "loginReg.jsp";
+            return "login.jsp";
         } else {
             session.setAttribute("userId", user.getId());
-            return "redirect:/Home";
+            return "redirect:/home";
         }
     }
 
@@ -64,6 +69,6 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/";
+        return "redirect:/login";
     }
 }

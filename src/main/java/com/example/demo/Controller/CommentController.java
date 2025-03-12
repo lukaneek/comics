@@ -35,7 +35,7 @@ public class CommentController {
 	ComicService comics;
 
 	// Create a new Comment
-	@PostMapping("/newcomments/{comicId}")
+	@PostMapping("/comments/{comicId}")
 	public String createComment(@Valid @ModelAttribute("comment") Comment comment, BindingResult result,
 			HttpSession session, @PathVariable("comicId") Long comicId, Model model, RedirectAttributes redirectAttributes) {
 		Comic oneComic = comics.findComic(comicId);
@@ -58,13 +58,13 @@ public class CommentController {
 		comment.setComic(oneComic);
 		comment.setUser(loggedInUser);
 		comments.createComment(comment);
-		return "redirect:/Home";
+		return "redirect:/home";
 	}
 
 	// Delete a comment by id
-	@DeleteMapping("/comments/destroy/{id}")
+	@DeleteMapping("/comments/destory/{id}")
 	public String destroyComment(@PathVariable("id") Long id) {
 		comments.deleteComment(id);
-		return "redirect:/Home";
+		return "redirect:/home";
 	}
 }

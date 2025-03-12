@@ -13,12 +13,8 @@
 <title>Welcome <c:out value="${ user.firstName}" /></title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/homepage.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<!-- YOUR own local JavaScript -->
-<script type="text/javascript" src="/js/app.js"></script>
 
 </head>
 <body>
@@ -26,7 +22,7 @@
 <c:set var="isNotAdmin" value="#{user.isAdmin == null or user.isAdmin == false}"/>
 	<nav class="navbar navbar-expand-lg border border-secondary mb-3" style="background-color: #e1ecfd">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/Home">Comic Book Store</a>
+			<a class="navbar-brand" href="/home">Comic Book Store</a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
@@ -36,11 +32,11 @@
           				<a class="nav-link" aria-current="page" href="/genre">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/comics/search">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="/books/search">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
-    	      				<a class="nav-link" aria-current="page" href="/comics/new">Add a New Comic!</a>
+    	      				<a class="nav-link" aria-current="page" href="/books/new">Add a New Comic!</a>
         				</li>
         			</c:if>
         			<li class="nav-item">
@@ -70,18 +66,18 @@
 				<tbody class="table-group-divider">
 					<c:forEach var="comic" items="${comics}">
 						<tr>
-							<td><a href="/comic/details/${comic.id}"> <c:out value="${comic.title}" /></a></td>
-							<td><a href="/comic/details/${comic.id}"> <img src="/uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:150px;"></a></td>
+							<td><a href="/books/details/${comic.id}"> <c:out value="${comic.title}" /></a></td>
+							<td><a href="/books/details/${comic.id}"> <img src="/uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:150px;"></a></td>
 		                	<td>
 							    <c:choose>
 			                        <c:when test="${rentedComicIds.contains(comic.id)}">
 			                            <button class="btn btn-secondary" disabled>Currently Unavailable</button>
 			                        </c:when>
 			                        <c:otherwise>
-			                            <form action="/comics/rent/${comic.id}" method="post" style="display:inline;">
+			                            <form action="/books/rent/${comic.id}" method="post" style="display:inline;">
 			                                <button type="submit" class="btn btn-primary">Rent Comic</button>
 			                            </form>
-			                            <form action="/comics/destroy/${comic.id}" method="post" style="display:inline;">
+			                            <form action="/books/destroy/${comic.id}" method="post" style="display:inline;">
 							                <input type="hidden" name="_method" value="delete" />
 							                <button type="submit" class="btn btn-danger" onclick="return confirm('All sales are final! Continue with purchase?');">Purchase Comic</button>
 							            </form>
@@ -108,14 +104,14 @@
 			        <tbody class="table-group-divider">
 			            <c:forEach var="rental" items="${rentedComics}">
 			                <tr>
-			                    <td><a href="/comic/details/${rental.comic.id}"> <c:out value="${rental.comic.title}" /></a></td>
-			                    <td><a href="/comic/details/${rental.comic.id}"> <img src="/uploads/cover_pictures/${rental.comic.coverImage}" alt="${rental.comic.title} Cover" style="width:150px;"></a></td>
+			                    <td><a href="/books/details/${rental.comic.id}"> <c:out value="${rental.comic.title}" /></a></td>
+			                    <td><a href="/books/details/${rental.comic.id}"> <img src="/uploads/cover_pictures/${rental.comic.coverImage}" alt="${rental.comic.title} Cover" style="width:150px;"></a></td>
 			                    <td><fmt:formatDate value="${rental.createdAt}" pattern="MM/dd/yyyy" /></td>
 			                    <td>
-								    <form action="/comics/return/${rental.id}" method="post" style="display:inline;">
+								    <form action="/books/return/${rental.id}" method="post" style="display:inline;">
 								        <button type="submit" class="btn btn-primary mb-3">Return Comic</button>
 								    </form>
-								    <form action="/comics/destroy/${rental.comic.id}" method="post" style="display:inline;">
+								    <form action="/books/destroy/${rental.comic.id}" method="post" style="display:inline;">
 						                <input type="hidden" name="_method" value="delete" />
 						                <button type="submit" class="btn btn-danger" onclick="return confirm('All sales are final! Continue with purchase?');">Purchase Comic</button>
 						            </form>

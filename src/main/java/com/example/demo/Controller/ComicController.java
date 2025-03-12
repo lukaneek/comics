@@ -54,7 +54,7 @@ public class ComicController {
 	RentalService rentalService;
 
 	// Home Page
-	@GetMapping("/Home")
+	@GetMapping("/home")
 	public String homepage(HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -74,7 +74,7 @@ public class ComicController {
 	}
 
 	// Takes you to a form to create a new comic
-	@GetMapping("/comics/new")
+	@GetMapping("/books/new")
 	public String newComic(@ModelAttribute("comic") Comic comic, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		model.addAttribute("genres", genreService.allGenres());
@@ -86,14 +86,16 @@ public class ComicController {
 	}
 
 	// Actually creates the new comic
-	@PostMapping("/newComic")
-    public String createComic(@Valid @ModelAttribute("comic") Comic comic, @ModelAttribute("genres") Genre genre, BindingResult result,
-            @RequestParam("coverPicture") MultipartFile file, HttpSession session) {
+	@PostMapping("/newBook")
+    public String createComic(@Valid @ModelAttribute("comic") Comic comic, BindingResult result, @ModelAttribute("genres") Genre genre,
+            @RequestParam("coverPicture") MultipartFile file, HttpSession session, Model model) {
+		Long userId = (Long) session.getAttribute("userId");
         if (result.hasErrors()) {
+        	model.addAttribute("user", userService.getLoggedInUser(userId));
+        	model.addAttribute("genres", genreService.allGenres());
             return "newComic.jsp";
         }
-
-        Long userId = (Long) session.getAttribute("userId");
+        
         if (userId == null) {
             return "redirect:/";
         }
@@ -120,15 +122,15 @@ public class ComicController {
                 }
             }
             comicService.createComic(comic);
-            return "redirect:/Home";
+            return "redirect:/home";
         } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/comics/new";
+            return "redirect:/books/new";
         }
     }
 	
 	//Shows you all the details of a comic
-	@GetMapping("/comic/details/{comicId}")
+	@GetMapping("/books/details/{comicId}")
 	public String showComicDetails(@PathVariable("comicId") Long comicId, @ModelAttribute("comment") Comment comment, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -137,7 +139,7 @@ public class ComicController {
 
 		Comic comic = comicService.findComic(comicId);
 		if (comic == null) {
-			return "redirect:/comics";
+			return "redirect:/books";
 		}
 		model.addAttribute("user", userService.getLoggedInUser(userId));
 		model.addAttribute("comic", comic);
@@ -150,7 +152,7 @@ public class ComicController {
 	}
 	
 	// Takes you to update comic form where you can make changes
-	@GetMapping("/comics/edit/{id}")
+	@GetMapping("/books/edit/{id}")
 	public String editComic(@PathVariable("id") Long id, Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -164,7 +166,7 @@ public class ComicController {
 	}
 	
 	// Updates the Comic
-	@PutMapping("/comics/{id}")
+	@PutMapping("/books/{id}")
 	public String updateComic(@PathVariable("id") Long id, @Valid @ModelAttribute("comic") Comic comic,
 	        BindingResult result, Model model, HttpSession session, @RequestParam("coverPicture") MultipartFile file) {
 	    if (result.hasErrors()) {
@@ -179,7 +181,7 @@ public class ComicController {
 	    // Retrieve existing comic to retain the current cover image if no new file is uploaded
 	    Comic existingComic = comicService.findComic(id);
 	    if (existingComic == null) {
-	        return "redirect:/Home";
+	        return "redirect:/home";
 	    }
 
 	    String uploadDir = "uploads/cover_pictures/";
@@ -208,15 +210,15 @@ public class ComicController {
 	        }
 
 	        comicService.updateComic(comic);
-	        return "redirect:/Home";
+	        return "redirect:/home";
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	        return "redirect:/Home";
+	        return "redirect:/home";
 	    }
 	}
 	
 	// Rent a comic
-	@PostMapping("/comics/rent/{comicId}")
+	@PostMapping("/books/rent/{comicId}")
 	public String rentComic(@PathVariable("comicId") Long comicId, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 	    if (userId == null) {
@@ -232,11 +234,11 @@ public class ComicController {
 	    	rental.setComic(comic);
 	    	rentalService.createRental(rental);
 	    }
-	    return "redirect:/Home";
+	    return "redirect:/home";
 	}
 	
 	// Return a comic
-	@PostMapping("/comics/return/{rentalId}")
+	@PostMapping("/books/return/{rentalId}")
 	public String returnComic(@PathVariable("rentalId") Long rentalId, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 	    if (userId == null) {
@@ -247,10 +249,10 @@ public class ComicController {
 	    if (rental != null && rental.getUser().getId().equals(userId)) {
 	    	rentalService.deleteRental(rentalId);
 	    }
-	    return "redirect:/Home";
+	    return "redirect:/home";
 	}
 	//search for comics by title
-	@GetMapping("/comics/search")
+	@GetMapping("/books/search")
 	public String searchPage(Model model, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -260,7 +262,7 @@ public class ComicController {
 		return "comicSearch.jsp";
 	}
 	//return searched comics
-	@GetMapping("/comics/results")
+	@GetMapping("/books/results")
 	public String searchBar(Model model, HttpSession session, @RequestParam("search") String search) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -276,10 +278,10 @@ public class ComicController {
 
 
 	// Delete a comic by id
-	@DeleteMapping("/comics/destroy/{id}")
+	@DeleteMapping("/books/destroy/{id}")
 	public String destroyComic(@PathVariable("id") Long id) {
 		comicService.deleteComic(id);
-		return "redirect:/Home";
+		return "redirect:/home";
 	}
 	
 }

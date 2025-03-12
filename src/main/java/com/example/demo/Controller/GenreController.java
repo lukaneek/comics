@@ -25,7 +25,7 @@ public class GenreController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/genre")
+	@GetMapping("/genres")
 	public String all(Model model, @ModelAttribute("genre") Genre genre, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
@@ -37,8 +37,8 @@ public class GenreController {
 		return "genre.jsp";
 	}
 	
-	@PostMapping("/genre")
-	public String create(@Valid Model model, @ModelAttribute("genre") Genre genre, BindingResult result, HttpSession session) {
+	@PostMapping("/genres")
+	public String create(@Valid @ModelAttribute("genre") Genre genre, BindingResult result, HttpSession session, Model model) {
 		Long userId = (Long) session.getAttribute("userId");
 		if (userId == null) {
 			return "redirect:/";
@@ -50,14 +50,14 @@ public class GenreController {
 		}
 		else {
 			genreServ.createGenre(genre);
-			return "redirect:/genre";
+			return "redirect:/genres";
 		}
 	}
 	
-	@DeleteMapping("/genre/delete/{id}")
+	@DeleteMapping("/genres/{id}")
 	public String destroy(@PathVariable("id") Long id) {
 		genreServ.deleteGenre(id);
-		return "redirect:/genre";
+		return "redirect:/genres";
 	}
 }
 

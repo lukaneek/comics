@@ -1,13 +1,15 @@
 package com.example.demo.Config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.HandlerTypePredicate;
+import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 
 @Configuration
-public class webConfig implements WebMvcConfigurer {
+public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -15,6 +17,7 @@ public class webConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/uploads/cover_pictures/**")
                 .addResourceLocations("file:uploads/cover_pictures/");
     }
+  
 }
 
 

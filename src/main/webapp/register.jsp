@@ -9,9 +9,9 @@
 <meta charset="ISO-8859-1">
 <title>Login And Register</title>
 <!-- for Bootstrap CSS -->
-<link rel="stylesheet" href="./webjars/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- For any Bootstrap that uses JS -->
-<script src="./webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -21,18 +21,17 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="#">Login</a>
+          				<a class="nav-link active" aria-current="page" href="/login">Login</a>
         			</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<div class="container" style="width: 60%">
-		<h3 class="fw-lighter fst-italic text-secondary-emphasis m-3">A place for comic lovers of all ages!</h3>
 		<div class="d-flex justify-content-around">
 			<div>
 				<div>
-					<form:form action="/register/user" method="post" modelAttribute="newUser">
+					<form:form action="/register" method="post" modelAttribute="newUser">
 						<h2>Register</h2>
 						<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your email and create a password!</p>
 						<div class="mb-2">
@@ -63,29 +62,6 @@
 						</div>
 						<input class="btn btn-primary" type="submit" name="" value="Register">
 					</form:form>
-				</div>
-			</div>
-			<div>
-				<div>
-					<div>
-						<form:form action="/login/user" method="post"
-							modelAttribute="newLogin">
-							<h2>Login</h2>
-							<p class="fw-lighter fst-italic text-secondary-emphasis">Please enter your Email and Password!</p>
-							<div class="mb-2">
-								<form:label class="form-label" path="email">Email</form:label>
-								<form:input class="form-control" type="email" path="email" placeholder="Email" />
-								<form:errors class="fw-lighter fst-italic text-danger" path="email" />
-							</div>
-							<div class="mb-2">
-								<form:label class="form-label" path="password">Password</form:label>
-								<form:input class="form-control" type="password" path="password"
-									placeholder="Password" />
-								<form:errors class="fw-lighter fst-italic text-danger" path="password" />
-							</div>
-							<input class="btn btn-primary" type="submit" name="" value="Login">
-						</form:form>
-					</div>
 				</div>
 			</div>
 		</div>

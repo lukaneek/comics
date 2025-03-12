@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="/css/newComic.css" />
 <!-- For any Bootstrap that uses JS -->
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<!-- YOUR own local JavaScript -->
-<script type="text/javascript" src="/js/app.js"></script>
 
 </head>
 <body>
@@ -26,17 +24,17 @@
 <c:set var="isNotAdmin" value="#{user.isAdmin == null or user.isAdmin == false}"/>
 	<nav class="navbar navbar-expand-lg border border-secondary mb-3" style="background-color: #e1ecfd">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/Home">Comic Book Store</a>
+			<a class="navbar-brand" href="/home">Comic Book Store</a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-          				<a class="nav-link active" aria-current="page" href="/Home">Home</a>
+          				<a class="nav-link active" aria-current="page" href="/home">Home</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/genre">Add/View Genres</a>
+          				<a class="nav-link" aria-current="page" href="/genres">Add/View Genres</a>
         			</li>
         			<li class="nav-item">
-          				<a class="nav-link" aria-current="page" href="/comics/search">Search Library</a>
+          				<a class="nav-link" aria-current="page" href="/books/search">Search Library</a>
         			</li>
         			<c:if test="${isAdmin}">
 	        			<li class="nav-item">
@@ -52,7 +50,7 @@
 	</nav>
 	<div class="container" style="width: 50%">
 		<h1>New Comic</h1>
-		<form:form action="/newComic" method="POST" modelAttribute="comic" enctype="multipart/form-data">
+		<form:form action="/newBook" method="POST" modelAttribute="comic" enctype="multipart/form-data">
 			<div class="mb-2">
 				<form:label class="form-label" path="title">Title</form:label>
 				<form:input class="form-control" path="title"/>
