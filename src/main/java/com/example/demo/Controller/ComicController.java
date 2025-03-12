@@ -7,6 +7,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,6 +39,9 @@ import jakarta.validation.Valid;
 @Controller
 public class ComicController {
 
+	@Value("${app.url.path}")
+	String appUrlPath;
+	
 	@Autowired
 	UserService userService;
 
