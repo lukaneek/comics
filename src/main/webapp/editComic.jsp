@@ -20,7 +20,7 @@
 <c:set var="isNotAdmin" value="#{user.isAdmin == null or user.isAdmin == false}"/>
 	<nav class="navbar navbar-expand-lg border border-secondary mb-3" style="background-color: #e1ecfd">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/home">Comic Book Store</a>
+			<a class="navbar-brand" href="./home">Comic Book Store</a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">

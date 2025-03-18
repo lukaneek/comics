@@ -24,7 +24,7 @@
 <c:set var="isNotAdmin" value="#{user.isAdmin == null or user.isAdmin == false}"/>
 	<nav class="navbar navbar-expand-lg border border-secondary mb-3" style="background-color: #e1ecfd">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/home">Comic Book Store</a>
+			<a class="navbar-brand" href="./home">Comic Book Store</a>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
@@ -55,6 +55,11 @@
 				<form:label class="form-label" path="title">Title</form:label>
 				<form:input class="form-control" path="title"/>
 				<form:errors class="fw-lighter fst-italic text-danger" path="title"/>
+			</div>
+			<div class="mb-2">
+				<form:label class="form-label" path="issueNumber">Issue Number</form:label>
+				<form:input min="1" class="form-control" type="number" path="issueNumber"/>
+				<form:errors class="fw-lighter fst-italic text-danger" path="issueNumber"/>
 			</div>
 			<div class="mb-2">
 				<form:label class="form-label" path="author">Author</form:label>

@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.Models.Comic;
+import com.example.demo.Models.Genre;
 
 @Repository
 public interface ComicRepository extends CrudRepository<Comic, Long> {
@@ -13,4 +14,6 @@ public interface ComicRepository extends CrudRepository<Comic, Long> {
 	List<Comic> findAll();
 	
 	List<Comic> findComicByTitleContaining(String title);
+	
+	List<Comic> findComicByGenres(Genre genre);
 }
