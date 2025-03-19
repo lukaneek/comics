@@ -89,7 +89,7 @@
                 <form:errors path="coverImage" class="text-danger" />
             </div>
             
-			 <input type="submit" value="Submit" class="btn btn-success" />
+			 <input type="submit" value="Submit" class="btn btn-primary" />
 		</form:form>
 	</div>
 </body>

@@ -47,7 +47,7 @@
 		</div>
 	</nav>
 		<div class="container" style="width: 30%">
-			<h1><c:out value="${comic.title}" /></h1>
+			<h1><c:out value="${comic.title}" /> # <c:out value="${comic.issueNumber}"/></h1>
 			<div class="d-flex justify-content-between">
 				<div>
 					<p><img src="./uploads/cover_pictures/${comic.coverImage}"
@@ -68,7 +68,7 @@
 			</div>
 			<c:if test="${isAdmin}">
 				<div class="d-flex justify-content-end" style="padding-right: 50px">
-					<a href="./editbook?id=${comic.id}" class="btn btn-warning">Edit</a>
+					<a href="./editbook?id=${comic.id}" class="btn btn-primary">Edit</a>
 					<form action="./books/destroy/${comic.id}" method="post">
 						<input type="hidden" name="_method" value="delete"> 
 						<input style="margin-left: 15px" type="submit" value="Delete" class="btn btn-danger">
@@ -97,7 +97,7 @@
 							<form:input type="number" path="commentRating" class="input-group" step="1" min="1" max="10" required="yes"/>
 						</div>
 						<div class="buttonGroup" style="padding-top: 20px">
-							<input type="submit" value="Submit" class="btn btn-success" />
+							<input type="submit" value="Submit" class="btn btn-primary" />
 						</div>
 					</div>
 				</form:form>

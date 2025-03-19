@@ -58,6 +58,7 @@
 				<thead>
 					<tr>
 						<th>Title</th>
+						<th>Issue Number</th>
 						<th>Cover Image</th>
 						<th>Rent / Purchase</th>
 					</tr>
@@ -66,6 +67,7 @@
 					<c:forEach var="comic" items="${searchedComics}">
 						<tr>
 							<td><a href="./bookdetails?id=${comic.id}"> <c:out value="${comic.title}" /></a></td>
+							<td><c:out value="${comic.issueNumber}"/></td>
 							<td><a href="./bookdetails?id=${comic.id}"> <img src="./uploads/cover_pictures/${comic.coverImage}" alt="${comic.title}'s Cover Image" style="width:100px;"></a></td>
 		                	<td>
 							    <c:choose>

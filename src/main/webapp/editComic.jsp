@@ -54,6 +54,11 @@
 				<form:errors class="fw-lighter fst-italic text-danger" path="title"/>
 			</div>
 			<div class="mb-2">
+				<form:label class="form-label" path="issueNumber">Issue Number</form:label>
+				<form:input class="form-control" path="issueNumber"/>
+				<form:errors class="fw-lighter fst-italic text-danger" path="issueNumber"/>
+			</div>
+			<div class="mb-2">
 				<form:label class="form-label" path="author">Author</form:label>
 				<form:input class="form-control" path="author"/>
 				<form:errors class="fw-lighter fst-italic text-danger" path="author"/>
@@ -81,7 +86,7 @@
                 <form:errors class="fw-lighter fst-italic text-danger" path="coverImage"/>
             </div>
 
-			 <input type="submit" value="Submit" class="btn btn-success" />
+			 <input type="submit" value="Submit" class="btn btn-primary" />
 			
 		</form:form>
 	</div>
