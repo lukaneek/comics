@@ -30,10 +30,6 @@ import com.example.demo.Services.CommentService;
 import com.example.demo.Services.GenreService;
 import com.example.demo.Services.RentalService;
 import com.example.demo.Services.UserService;
-import com.openai.client.OpenAIClient;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
-import com.openai.models.ChatModel;
-import com.openai.models.responses.ResponseCreateParams;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -43,10 +39,6 @@ public class ComicController {
 
 	@Value("${app.url.path}")
 	String appUrlPath;
-	
-	@Value("${app.openai.key}")
-	String appOpenaiKey;
-	
 	
 	@Autowired
 	UserService userService;
@@ -290,27 +282,6 @@ public class ComicController {
 		}
 		return "comicSearch.jsp";
 	}
-	
-	
-	/*@GetMapping("/openai")
-	public String openaiRequest(@RequestParam("title") String title, @RequestParam("issueNumber") Integer issueNumber, Model model) {
-		OpenAIClient client = OpenAIOkHttpClient.builder()
-			    .apiKey(appOpenaiKey)
-			    .build();
-		
-		ResponseCreateParams params = ResponseCreateParams.builder()
-		        .input(title + " " + issueNumber + " comic")
-		        .model(ChatModel.GPT_4O)
-		        .build();
-		//Response response = client.responses().create(params);
-		
-		client.responses().create(params).output().stream()
-        .flatMap(item -> item.message().stream())
-        .flatMap(message -> message.content().stream())
-        .flatMap(content -> content.outputText().stream())
-        .forEach(outputText -> System.out.println(outputText.text()));
-		return null;
-	}*/
 
 	// Delete a comic by id
 	@DeleteMapping("/books/destroy/{id}")
