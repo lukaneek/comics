@@ -55,7 +55,7 @@
 			</div>
 			<div class="mb-2">
 				<form:label class="form-label" path="issueNumber">Issue Number</form:label>
-				<form:input class="form-control" path="issueNumber"/>
+				<form:input min="1" class="form-control" type="number" path="issueNumber"/>
 				<form:errors class="fw-lighter fst-italic text-danger" path="issueNumber"/>
 			</div>
 			<div class="mb-2">
