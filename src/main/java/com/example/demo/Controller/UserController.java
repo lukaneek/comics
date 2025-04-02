@@ -1,5 +1,7 @@
 package com.example.demo.Controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -68,6 +70,21 @@ public class UserController {
             return "redirect:" + appUrlPath + "/home";
         }
     }
+    
+    @PostMapping("/guest")
+    public String guest(@ModelAttribute("newLogin") LoggedInUser newLogin, BindingResult result, HttpSession session) {
+    	UUID uuid = UUID.randomUUID();
+    	User user = new User();
+    	user.setFirstName("Guest");
+    	user.setLastName("Guest");
+    	user.setPassword("guest");
+    	user.setConfirm("guest");
+    	user.setEmail(uuid + "@guest.com");
+    	user.setIsAdmin(true);
+    	user = users.register(user, result);
+    	session.setAttribute("userId", user.getId());
+        return "redirect:" + appUrlPath + "/home";
+    }
 
     // Logout the User
     @GetMapping("/logout")
@@ -76,3 +93,9 @@ public class UserController {
         return "redirect:" + appUrlPath + "/login";
     }
 }
+
+
+
+
+
+
